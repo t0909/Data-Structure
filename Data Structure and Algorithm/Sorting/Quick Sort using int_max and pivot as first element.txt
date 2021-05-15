@@ -1,0 +1,55 @@
+//***************QUICK SORT USING INT MAX AND FIRST ELEMENT AS PIVOT***************
+#include<bits/stdc++.h>
+using namespace std;
+int Partition(int A[], int l,int h)
+{
+    int pivot=A[l];
+    int i=l;
+    int j=h;
+    do
+    {
+    do{i++;} while(A[i]<=pivot);
+    do{j--;} while(A[j]>pivot);
+    
+    if(i<j)
+    { 
+        swap(A[i],A[j]);
+    }
+    }
+    while(i<j);
+    
+    swap(A[l],A[j]);
+    
+    return j;
+    
+}
+void QuickSort(int A[], int low, int high){
+    if (low < high){
+        int j = Partition(A, low, high);
+        QuickSort(A, low, j);
+        QuickSort(A, j+1, high);
+    }
+}
+ 
+ 
+int main()
+{
+    int n;
+    cout<<"Enter no. of elements\n";
+    cin>>n;
+    int a[n];
+    cout<<"Enter the elelments:\n";
+    for(int i=0; i<n-1; i++)
+    {
+        cin>>a[i];
+    }
+    
+    QuickSort(a,0,n-1);
+     cout<<"Elements after Quick Sort are:\n";
+    for(int i=0; i<n-1; i++)
+    {
+        cout<<a[i]<<" ";
+    }
+    
+    
+}

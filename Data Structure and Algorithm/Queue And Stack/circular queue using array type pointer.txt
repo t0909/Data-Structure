@@ -1,0 +1,102 @@
+//************** CIRCULAR QUEUE USING ARRAY TYPE POINTER************************//
+
+/* FRONT=0
+   REAR=0
+   1 EMPTY SPACE
+*/
+
+
+#include<bits/stdc++.h>
+using namespace std;
+ class CircularQueue
+ {
+     private:
+     
+     int size;
+     int front;
+     int rear;
+     int *q;
+     
+     public:
+     
+     CircularQueue(int size);
+     ~CircularQueue();
+     bool isFull();
+     bool isEmpty();
+     void enqueue(int x);
+     int dequeue();
+     
+     
+ };
+ 
+ CircularQueue :: CircularQueue(int size)
+ {
+     this->size=size;
+     front=0;
+     rear=0;
+     q=new int[size];
+ }
+ 
+ CircularQueue :: ~CircularQueue()
+ {
+     delete []q;
+ }
+ 
+bool CircularQueue :: isFull()
+{
+    if((rear+1)%size==front)
+    return true;
+    return false;
+    
+}
+
+bool CircularQueue :: isEmpty()
+{
+    if(rear==front)
+    return true;
+    return false;
+    
+}
+
+void CircularQueue :: enqueue(int x)
+{
+    if(isFull())
+    {
+        cout<<"isFull"<<endl;
+    }
+    
+    else
+    {
+        rear=(rear+1)%size;
+        q[rear]=x;
+    }
+}
+
+int CircularQueue :: dequeue()
+{
+    int x=-1;
+    if(isEmpty())
+    {
+        cout<<"isEmpty"<<endl;
+    }
+    else
+    {
+        front=(front+1)%size;
+        x=front;
+    }
+    return x;
+}
+
+int main()
+{
+    CircularQueue q(100);
+    q.enqueue(1); 
+    q.enqueue(2); 
+    q.enqueue(3); 
+  
+    cout << q.dequeue() << '\n'; 
+    cout << q.dequeue() << '\n'; 
+    cout << q.dequeue() << '\n'; 
+  
+    return 0; 
+}

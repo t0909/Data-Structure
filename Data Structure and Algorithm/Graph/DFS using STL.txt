@@ -1,0 +1,58 @@
+//********************************DFS using STL*******************
+#include<bits/stdc++.h>
+using namespace std;
+
+void DFS(int u, int A[8][8], int n)
+{
+    int visited[8]={0};
+    stack<int> stk;
+    stk.push(u);
+    
+    cout<<u<<" ";
+    visited[u]=1;
+    int v=0;
+    
+    while(!stk.empty())
+    {
+        while(v<n)
+        {
+            if(A[u][v]==1 && visited[v]==0)
+            {
+                stk.push(u); //Suspend exploring current u
+                u=v;         //update current vertex as the next adjacent vertex 
+                
+                //Visit current vertex u
+                cout<<u<<" ";
+                visited[u]=1;
+                v=-1;
+                
+            }
+            v++;
+        }
+             v=u;//can set v=0 but have to check only those vertex where u has not checked
+             u=stk.top();
+             stk.pop();
+    }
+}
+
+int main (){
+ 
+    int A[8][8] = {{0, 0, 0, 0, 0, 0, 0, 0},
+                   {0, 0, 1, 1, 1, 0, 0, 0},
+                   {0, 1, 0, 1, 0, 0, 0, 0},
+                   {0, 1, 1, 0, 1, 1, 0, 0},
+                   {0, 1, 0, 1, 0, 1, 0, 0},
+                   {0, 0, 0, 1, 1, 0, 1, 1},
+                   {0, 0, 0, 0, 0, 1, 0, 0},
+                   {0, 0, 0, 0, 0, 1, 0, 0}};
+ 
+    cout << "Vertex: 4 -> " << flush;
+    DFS(4, A, 8);
+    cout << endl;
+    
+     cout << "Vertex: 7-> " << flush;
+    DFS(7, A, 8);
+    cout << endl;
+ 
+    return 0;
+}

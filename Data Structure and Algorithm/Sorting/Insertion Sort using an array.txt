@@ -1,0 +1,46 @@
+//****************************INSERTION SORT USING ARRAY***************
+
+#include<bits/stdc++.h>
+using namespace std ;
+
+void InsertionSort(int a[], int n)// O[n]-o[n2]
+{
+    int x,j;
+    for(int i=1;i<n;i++) 
+    {
+         x=a[i];
+         j=i-1;
+        {
+            while(j>-1&&x<a[j])
+            {
+                a[j+1]=a[j];
+                j--;
+            }
+            
+            a[j+1]=x;
+        }
+    }
+}
+int main()
+{
+    int n;
+    cout<<"No. of elements in an array\n";
+    cin>>n;
+    int a[n];
+    cout<<"Enter the element\n";
+    for(int i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+    
+    InsertionSort(a,n);
+    
+    cout<<"Element after Insertion Sort are:\n";
+    for(int i=0;i<n;i++)
+    {
+        cout<<a[i]<<" ";
+    }
+    
+    return 0;
+    
+}

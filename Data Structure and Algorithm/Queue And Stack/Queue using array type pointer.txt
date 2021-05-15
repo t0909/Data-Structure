@@ -1,0 +1,130 @@
+//*******QUEUE USING ARRAY IN HEAP***
+
+#include<bits/stdc++.h>
+using namespace std;
+class Queue
+{
+    private:
+    int front;
+    int rear;
+    int size;
+    int *Q;
+    
+    
+    public:
+    
+    Queue(int size);
+    
+    bool isFull();
+    bool isEmpty();
+    void enqueue(int x);
+    int dequeue();
+    void display();
+      
+    
+};
+
+Queue::Queue(int size)
+{
+    this->size=size;
+    front=-1;
+    rear=-1;
+    Q=new int[size];
+    
+   
+    
+}
+
+
+bool Queue::isFull()
+{
+    if(rear==size-1)
+    return true;
+    
+    return false;
+    
+    
+}
+
+bool Queue::isEmpty()
+{
+    if(rear==front)
+    return true;
+    
+    return false;
+    
+    
+}
+
+void Queue:: enqueue(int x)
+{
+    if(isFull())
+    {
+        cout<<"FULL"<<endl;
+    }
+        else
+        {
+            rear++;
+            Q[rear]=x;
+        }
+    
+}
+
+int Queue:: dequeue()
+{
+    int x=-1;
+    if(isEmpty())
+    {
+        cout<<"Empty"<<endl ;
+    }
+        else
+        {
+            front++;
+            x=Q[front];
+        }
+        
+        return x;
+    
+}
+
+void Queue:: display()
+{
+    if(isEmpty())
+    {
+        cout<<"Empty";
+    }
+        else
+        {
+           for(int i=front+1;i<=rear;i++)
+           {
+               cout<<Q[i]<<" ";
+           }
+           cout<<endl;
+        }
+    
+}
+
+int main()
+{
+    
+    
+    Queue q(100);
+    
+    q.enqueue(1);
+    q.enqueue(6);
+    q.enqueue(5);
+    q.enqueue(8);
+    q.enqueue(3);
+    
+    
+    q.dequeue();
+    q.dequeue();
+    
+    cout<<"Display";
+    q.display();
+    
+    
+    return 0;
+       
+    
+}

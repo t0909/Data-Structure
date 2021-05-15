@@ -1,0 +1,44 @@
+//*******************BUBBLE SORT*****************
+
+#include<bits/stdc++.h>
+using namespace std;
+
+void BubbleSort(int A[], int n)
+{
+    int flag =0;
+    
+    for(int i=0; i<n-1; i++) //For passes
+    {
+        for(int j=0; j=n-1-i; j++)// For comparison
+        {
+            if(A[j]>A[j+1])
+            {
+                swap(A[j],A[j+1]);
+                flag=1;
+            }
+        }
+        
+        if(flag=0)
+        break;
+    }
+    
+    
+}
+
+
+
+
+int main()
+{
+    int A[] = {8,4,5,6,7,7};
+    
+    int n = 6;
+    
+    BubbleSort(A,n);
+    
+    for(int i=0; i<n; i++)
+    {
+        cout<<A[i]<<" ";
+    }
+    
+}
